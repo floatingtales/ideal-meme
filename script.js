@@ -8,6 +8,8 @@ const generateReply = () => {
   client.get("ticket.conversation").then(async (data) => {
     const chat = [];
 
+    console.log(data);
+
     for (const conversation of data.ticket.conversation) {
       chat.push({
         role: conversation.author.role,
