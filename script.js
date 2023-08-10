@@ -9,14 +9,11 @@ const generateReply = () => {
     const chat = [];
 
     for (const conversation of data["ticket.conversation"]) {
-      let role;
       chat.push({
         role: conversation.author.role === "end-user" ? "user" : "assistant",
         content: conversation.message.content.match(/(?<=>).+(?=<)/gm)[0],
       });
     }
-
-    console.log(chat);
 
     const reply = await axios.post(
       "https://proud-queens-mate.loca.lt/getAIReply",
@@ -26,13 +23,11 @@ const generateReply = () => {
       }
     );
 
-    console.log(reply);
     client.invoke("comment.appendText", reply.data[0].message.content);
   });
 };
 
 client.on("ticket.conversation.changed", () => {
-  console.log("conversation changed");
   client.get("ticket.conversation").then(async (data) => {
     if (
       data.ticket.conversation.at(-1).author.role === "agent" ||
@@ -41,7 +36,6 @@ client.on("ticket.conversation.changed", () => {
     ) {
       console.log("agent/admin/system messaged last");
     } else {
-      console.log("client messaged last");
       generateReply();
     }
   });
