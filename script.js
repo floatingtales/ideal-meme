@@ -18,7 +18,7 @@ const generateReply = () => {
     console.log(chat);
 
     const reply = await axios.post(
-      "https://empty-cloths-peel.loca.lt/getAIReply",
+      "https://ready-suits-suffer.loca.lt/getAIReply",
       { chat }
     );
     client.invoke("comment.appendText", reply[0].message.content);
