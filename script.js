@@ -27,7 +27,7 @@ const generateReply = () => {
     );
 
     console.log(reply);
-    client.invoke("comment.appendText", reply[0].message.content);
+    client.invoke("comment.appendText", reply.data[0].message.content);
   });
 };
 
