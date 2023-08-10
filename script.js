@@ -15,6 +15,7 @@ const generateReply = () => {
       });
     }
 
+    // this is the api endpoint for the POST request, this is a randomized endpoint with localtunnel.
     const reply = await axios.post(
       "https://proud-queens-mate.loca.lt/getAIReply",
       { chat },
