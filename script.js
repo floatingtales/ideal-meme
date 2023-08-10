@@ -7,3 +7,13 @@ client.invoke("resize", {
 const generateReply = () => {
   client.invoke("comment.appendText", "test one two three");
 };
+
+client.on("ticket.conversation.changed", () => {
+  console.log("conversation changed");
+  client.get("ticket.conversation").then((data) => {
+    console.log("getting data");
+    console.log(data);
+
+    generateReply();
+  });
+});
