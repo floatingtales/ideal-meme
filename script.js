@@ -24,6 +24,8 @@ const generateReply = () => {
         headers: { "Bypass-Tunnel-Reminder": true },
       }
     );
+
+    console.log(reply);
     client.invoke("comment.appendText", reply[0].message.content);
   });
 };
