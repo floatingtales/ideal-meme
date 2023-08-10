@@ -19,7 +19,7 @@ const generateReply = () => {
     console.log(chat);
 
     const reply = await axios.post(
-      "https://red-sloths-obey.loca.lt/getAIReply",
+      "https://proud-queens-mate.loca.lt/getAIReply",
       { chat },
       {
         headers: { "Bypass-Tunnel-Reminder": true },
