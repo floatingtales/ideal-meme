@@ -8,14 +8,14 @@ const generateReply = () => {
   client.get("ticket.conversation").then(async (data) => {
     const chat = [];
 
-    console.log(data["ticket.conversation"]);
-
     for (const conversation of data["ticket.conversation"]) {
       chat.push({
         role: conversation.author.role,
         content: conversation.message.content,
       });
     }
+
+    console.log(chat);
 
     const reply = await axios.post(
       "https://empty-cloths-peel.loca.lt/getAIReply",
