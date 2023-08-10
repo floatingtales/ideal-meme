@@ -1,5 +1,3 @@
-const axios = require("axios");
-
 const client = ZAFClient.init();
 client.invoke("resize", {
   width: "100%",
