@@ -11,15 +11,18 @@ const generateReply = () => {
     for (const conversation of data["ticket.conversation"]) {
       chat.push({
         role: conversation.author.role,
-        content: conversation.message.content.match(/(?<=>).+(?=<)/gm),
+        content: conversation.message.content.match(/(?<=>).+(?=<)/gm)[0],
       });
     }
 
     console.log(chat);
 
     const reply = await axios.post(
-      "https://ready-suits-suffer.loca.lt/getAIReply",
-      { chat }
+      "https://red-sloths-obey.loca.lt/getAIReply",
+      { chat },
+      {
+        headers: { "Bypass-Tunnel-Reminder": true },
+      }
     );
     client.invoke("comment.appendText", reply[0].message.content);
   });
