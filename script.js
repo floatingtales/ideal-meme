@@ -11,7 +11,7 @@ const generateReply = () => {
     for (const conversation of data["ticket.conversation"]) {
       chat.push({
         role: conversation.author.role,
-        content: conversation.message.content,
+        content: conversation.message.content.match(/(?<=>).+(?=<)/gm),
       });
     }
 
