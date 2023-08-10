@@ -1,4 +1,4 @@
-import { post } from "axios";
+const axios = require("axios");
 
 const client = ZAFClient.init();
 client.invoke("resize", {
@@ -17,9 +17,10 @@ const generateReply = () => {
       });
     }
 
-    const reply = await post("https://empty-cloths-peel.loca.lt/getAIReply", {
-      chat,
-    });
+    const reply = await axios.post(
+      "https://empty-cloths-peel.loca.lt/getAIReply",
+      { chat }
+    );
     client.invoke("comment.appendText", reply[0].message.content);
   });
 };
